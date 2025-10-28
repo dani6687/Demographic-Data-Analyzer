@@ -5,16 +5,8 @@ import pandas as pd
 def calculate_demographic_data(print_data=True):
 
     # Read data from file
-    df = pd.read_csv("adult.data.csv",
-                     header = None,
-                     names= ['age','workclass','fnlwgt','education','education-num','marital-status','occupation','relationship','race','sex','capital-gain','capital-loss','hours-per-week','native-country','salary'],
-                     sep=',',
-                     na_values = [' ?']
-                     )
+    df = pd.read_csv("adult.data.csv")
     
-    for col in df.select_dtypes(include = 'object'):
-        df[col] = df[col].str.strip()
-
     #How many people of each race are represented in this dataset? This should be a Pandas series with race names as the index labels. 
     race_count = df['race'].value_counts().rename('race')
 
